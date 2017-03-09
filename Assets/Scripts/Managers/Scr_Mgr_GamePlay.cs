@@ -18,4 +18,12 @@ public class Scr_Mgr_GamePlay : MonoBehaviour
         //Linking the gameResources object
         GameResources = GetComponent<Scr_GameResources>();
     }
+
+    public void LoadLevel(Scr_Level _level)
+    {
+        if(currentLevel != null)
+        {
+            currentLevel.gameObject.SetActive(false);
+        }
+    }
 }
