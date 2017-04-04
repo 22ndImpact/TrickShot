@@ -5,10 +5,12 @@ using UnityEngine;
 public class Scr_GameplayController : MonoBehaviour
 {
     public Scr_Level CurrentLevel;
-
     public bool DebugMode;
-
     public Scr_SceneController SceneController = new Scr_SceneController();
+
+    public string Sce_LevelSelect;
+    public string Sce_LevelUI;
+    public string Sce_LevelComplete;
 
 	// Use this for initialization
 	void Start ()
@@ -35,7 +37,6 @@ public class Scr_GameplayController : MonoBehaviour
 
         
     }
-
     public void UnloadLevel(string _LevelID)
     {
         //Unloads the level
@@ -51,31 +52,30 @@ public class Scr_GameplayController : MonoBehaviour
         }
 
         //Load the level select Scene
-        SceneController.AddScene("LevelSelect");
+        SceneController.AddScene(Sce_LevelSelect);
     }
     public void UnloadLevelSelect()
     {
         //Load the level select Scene
-        SceneController.RemoveScene("LevelSelect");
+        SceneController.RemoveScene(Sce_LevelSelect);
     }
 
     public void LoadLevelUI()
     {
-        SceneController.AddScene("LevelUI");
+        SceneController.AddScene(Sce_LevelUI);
     }
     public void UnloadLevelUI()
     {
-        Debug.Log("Unload Level UI");
-        SceneController.RemoveScene("LevelUI");
+        SceneController.RemoveScene(Sce_LevelUI);
     }
 
     public void LoadLevelComplete()
     {
-        SceneController.AddScene("LevelComplete");
+        SceneController.AddScene(Sce_LevelComplete);
     }
     public void UnloadLevelComplete()
     {
-        SceneController.RemoveScene("LevelComplete");
+        SceneController.RemoveScene(Sce_LevelComplete);
     }
 
     public void LoadNextLevel()
@@ -83,7 +83,6 @@ public class Scr_GameplayController : MonoBehaviour
         UnloadLevelComplete();
         LoadLevel(CurrentLevel.nextLevelID);
     }
-
     public void ReloadLevel()
     {
         UnloadLevelComplete();
